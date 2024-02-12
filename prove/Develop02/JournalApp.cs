@@ -20,7 +20,18 @@ public class JournalApp {
             switch (choice){
                 case 1:
                     Console.WriteLine("You made it to New Entry!");
-                    // NewEntry();    
+                    // NewEntry(); 
+                            // When you want to make a new entry:
+                    // string prompt = "prompt";
+                    string prompt = journal.GetRandomPrompt();
+
+                    // string response = "Response";
+                    string response = journal.GetResponse(string prompt);
+
+                    // string date = "Date";
+                    string dateText = journal.GetDate();
+                    Entry entry = new Entry(prompt, response, dateText);
+                    entry.DisplayEntry();   
                     
                 break;
 
@@ -64,7 +75,7 @@ public class JournalApp {
     }
 
     // Writing/overwriting a file
-    public void WriteFile(string filename, string prompt) {
+    public void SaveFile(string filename, string prompt) {
         // string filename = "myFile.txt";
         this.filename = filename;
         using (StreamWriter outputFile = new StreamWriter(filename))

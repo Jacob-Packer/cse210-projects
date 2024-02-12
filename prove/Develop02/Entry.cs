@@ -7,7 +7,8 @@ public class Entry
     string date;
 
     // constructor
-    public Entry(string prompt, string response, string date){
+    public Entry(string prompt, string response, string date)
+    {
         this.prompt = prompt;
         this.response = response;
         this.date = date;
