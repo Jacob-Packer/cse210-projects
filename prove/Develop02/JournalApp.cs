@@ -13,6 +13,7 @@ public class JournalApp {
             }
 
             // Get user choice
+            Console.WriteLine();
             Console.Write("Choose an option.\n  > ");
             int choice = int.Parse(Console.ReadLine());
 

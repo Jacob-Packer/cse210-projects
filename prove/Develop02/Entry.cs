@@ -34,7 +34,7 @@ public class Entry
     // method to retrun string of an entry (prompt, entry, date)
     // return
     public string Stringify(){
-        return ($"{prompt}|{response}|{date}");
+        return $"{prompt}|{response}|{date}";
     }
 
     

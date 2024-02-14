@@ -13,7 +13,7 @@ public class Journal
     {
         // use Random to get a prompt
         Random rnd = new Random();
-        int r = rnd.Next(entries.Count);
+        int r = rnd.Next(entries.Count());
         string prompt = prompts[r];
         return prompt;
     }

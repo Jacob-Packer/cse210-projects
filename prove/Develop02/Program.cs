@@ -16,8 +16,6 @@ class Program
         JournalApp journalApp = new JournalApp();
         Journal journal = new Journal();
         journalApp.DisplayMenu(journal);
-
-        
     }
     
 }
