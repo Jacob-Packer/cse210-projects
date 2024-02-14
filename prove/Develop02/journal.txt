@@ -1,0 +1,6 @@
+Date|Prompt|Response
+Prompt|Response|Date
+entry 3|2/13/2024|prompt 1
+entry 2|2/13/2024|prompt 1
+entry 4|2/13/2024|prompt 2
+prompt 2|entry 5|2/13/2024

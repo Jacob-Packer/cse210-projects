@@ -1,9 +1,9 @@
 public class JournalApp {
     // Menu options
-    public void DisplayMenu() 
+    public void DisplayMenu(Journal journal) 
     {
         // Menu options
-        string[] menuOptions = {"New Entry", "Quit", "Display Journal", "Mazda"};
+        string[] menuOptions = {"New Entry", "Save Journal to File", "Load Journal File", "Display Journal Entries", "Quit"};
         // Print Menu
         while (true) {
             int index = 1;
@@ -19,33 +19,39 @@ public class JournalApp {
             //switch case tree 
             switch (choice){
                 case 1:
-                    Console.WriteLine("You made it to New Entry!");
                     // NewEntry(); 
-                            // When you want to make a new entry:
-                    // string prompt = "prompt";
                     string prompt = journal.GetRandomPrompt();
-
-                    // string response = "Response";
-                    string response = journal.GetResponse(string prompt);
-
-                    // string date = "Date";
-                    string dateText = journal.GetDate();
-                    Entry entry = new Entry(prompt, response, dateText);
+                    string response = journal.GetResponse(prompt);                    
+                    Entry entry = new Entry(prompt, response);
+                    journal.entries.Add(entry);
                     entry.DisplayEntry();   
-                    
-                break;
-
+                    break;
+                
                 case 2:
+                    // write file/save file
+                    Console.WriteLine("writing/saving journal file...");
+                    journal.SaveFile();
+                    Console.WriteLine("Your file has been saved.");
+                    break;
+
+                case 3:
+                    // load journal/read file
+                    Console.WriteLine("Reading/Loading journal file...");
+                    journal.ReadFile();
+                    Console.WriteLine("You have loaded a journal file.");
+                    break;
+
+                case 4:
+                    // display Journal
+                    Console.WriteLine("Displaying journal file...");
+                    journal.DisplayJournal();
+                    break;
+
+                case 5:
                     Console.WriteLine("You Quit");
                     Environment.Exit(0);
                     break;
 
-                case 3:
-                    // Instantiate new entry
-                    
-                    Console.WriteLine("You can view past entries");
-                    // entry = new Entry;
-                    break;
                 default:
                     Console.WriteLine("Choose a valid option.");
                     break;
@@ -54,41 +60,7 @@ public class JournalApp {
         }
     }
 
-    // Reading/Loading a file
-    // Not sure how to make this better
-    public string filename;
-    public void ReadFile(string filename) {
-        this.filename = filename;
-        // string filename = "myFile.txt"
-        Console.Write("Enter the name of the file\n  > ");
-        filename = Console.ReadLine();
-        string[] lines = System.IO.File.ReadAllLines(filename);
-
-        foreach (string line in lines)
-        {
-            // Declare some symbol to split by
-            string[] parts = line.Split("(*_*)");
-
-            string date = parts[0];
-            string entry = parts[1];
-        }
-    }
-
-    // Writing/overwriting a file
-    public void SaveFile(string filename, string prompt) {
-        // string filename = "myFile.txt";
-        this.filename = filename;
-        using (StreamWriter outputFile = new StreamWriter(filename))
-        {
-            // You can add text to the file with the WriteLine method
-            outputFile.WriteLine("This will be the first line in the file.");
-            
-            // You can use the $ and include variables just like with Console.WriteLine
-            DateTime theCurrentTime = DateTime.Now;
-            string dateText = theCurrentTime.ToShortDateString();
-            outputFile.WriteLine($"Date - {dateText};*_*{prompt}");
-        }
-    }  
+     
 
 
 }

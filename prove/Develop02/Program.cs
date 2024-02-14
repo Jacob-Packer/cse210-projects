@@ -11,10 +11,11 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Journal Entry World!");
+        Console.WriteLine();
+        Console.WriteLine("Welcome to your JournalApp!\n");
         JournalApp journalApp = new JournalApp();
         Journal journal = new Journal();
-        journalApp.DisplayMenu();
+        journalApp.DisplayMenu(journal);
 
         
     }
