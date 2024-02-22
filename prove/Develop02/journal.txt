@@ -1,6 +1,8 @@
 Date|Prompt|Response
+prompt 1|yeah|2/14/2024
 Prompt|Response|Date
-entry 3|2/13/2024|prompt 1
-entry 2|2/13/2024|prompt 1
-entry 4|2/13/2024|prompt 2
-prompt 2|entry 5|2/13/2024
+Response|Date|Prompt
+2/13/2024|prompt 1|entry 3
+2/13/2024|prompt 1|entry 2
+2/13/2024|prompt 2|entry 4
+entry 5|2/13/2024|prompt 2
