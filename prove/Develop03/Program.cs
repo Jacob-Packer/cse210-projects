@@ -17,6 +17,8 @@ class Program
         Reference reference = new Reference(book, chapter, verse);
         Scripture scripture = new Scripture(reference, scriptureText);
 
+        scripture.DisplayScripture();
+
         //call hide scripture method
         
     }

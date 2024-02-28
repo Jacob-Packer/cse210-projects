@@ -28,7 +28,7 @@ class Scripture
         // scripture
 
     }
-    private string DisplayScripture(){
+    public string DisplayScripture(){
         string scriptureText = "";
         foreach (Word word in words)
         {
