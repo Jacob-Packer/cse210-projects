@@ -2,6 +2,7 @@ using System.Data.Common;
 
 class Assignment
 {
+
     private string studentName;
     private string topic;
     public Assignment(string studentName, string topic)

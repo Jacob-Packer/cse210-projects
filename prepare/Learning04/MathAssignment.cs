@@ -4,15 +4,13 @@ class MathAssignment : Assignment
 {
     private string textbookSection;
     private string problems;
-    public MathAssignment( string textbookSection, string problems) : base(studentName, topic)
+    public MathAssignment(string studentName, string topic, string textbookSection, string problems) : base(studentName, topic)
     {
-        this.studentName = studentName;
-        this.topic = topic;
         this.textbookSection = textbookSection;
         this.problems = problems;
     }
     public string GetHomeworkList()
     {
-        return ($"Section {textbookSection}, problems {problems}");
+        return ($"Section {textbookSection}, Problems {problems}");
     }
 }
