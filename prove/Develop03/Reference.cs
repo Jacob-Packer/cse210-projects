@@ -1,7 +1,7 @@
 using System.ComponentModel;
 using System.Security.Principal;
 
-class Reference
+class Reference 
 {
     private string book;
     private int chapter;

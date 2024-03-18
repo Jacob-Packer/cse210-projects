@@ -1,7 +1,7 @@
 using System;
 using System.Reflection.Metadata.Ecma335;
 
-class Program
+class Program 
 {
     static void Main(string[] args)
     {
