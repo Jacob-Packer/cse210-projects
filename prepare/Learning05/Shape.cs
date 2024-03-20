@@ -2,8 +2,11 @@ using System.Security.Cryptography.X509Certificates;
 
 abstract public class Shape
 {
-    private string color = "red";
-    public Shape(){}
+    private string color;
+    public Shape(string color)
+    {
+        this.color = color;
+    }
     public string GetColor()
     {
         return color;
@@ -13,6 +16,6 @@ abstract public class Shape
         this.color = color;
     }
 
-    public abstract double GetArea();
+    public virtual void GetArea(){}
     
 }
