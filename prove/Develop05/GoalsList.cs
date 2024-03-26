@@ -71,7 +71,7 @@ class GoalsList
         DisplayGoals();
         Console.Write("Which goal to report on?\n  >");
         int choice = int.Parse(Console.ReadLine());
-        double pointsGained = goalsList[choice - 1].ReportProgress(); //
+        double pointsGained = goalsList[choice - 1].ReportProgress(); 
         Console.WriteLine($"You gained {pointsGained}");
         
         totalScore += pointsGained;

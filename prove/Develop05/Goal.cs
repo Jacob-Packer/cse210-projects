@@ -3,7 +3,7 @@ using System.Net.Sockets;
 using System.Reflection.Metadata.Ecma335;
 using System.Text.Json.Serialization;
 
- abstract class Goal
+abstract class Goal
 {
     public abstract string goalType {get; set; }
     public string name { get; set; }
