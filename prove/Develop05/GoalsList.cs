@@ -1,14 +1,33 @@
+using System.Data;
 using System.Diagnostics;
 using System.Dynamic;
+using System.IO.Enumeration;
 using System.Numerics;
 using System.Reflection.Metadata.Ecma335;
 using System.Runtime.InteropServices.Marshalling;
+using System.Text.Json;
 
 class GoalsList
 {
-    public double totalScore { get; set; } = 0;
-    public List<Goal> goalsList { get; set; } = new List<Goal>();
-    public GoalsList(){}
+    public double totalScore { get; set; }
+    public List<string> menuOptions {get; set; }
+    public List<Goal> goalsList { get; set; }
+    public GoalsList()
+    {
+        goalsList = new List<Goal>();
+        menuOptions = new List<string>(){"Report Progress on a Goal", "Set New Goal", "Show Current Score", "Display All Goals", "Save Goals", "Load Saved Goals File", "Quit"};
+        totalScore = 0;
+    }
+    public void DisplayMenu()
+    {
+        int index = 1;
+        foreach (string option in menuOptions)
+        {
+            Console.WriteLine($"[{index}] {option}");
+            index++;
+        }
+        
+    }
     public double GetScore()
     {
         return totalScore;
@@ -24,18 +43,16 @@ class GoalsList
         switch (choice)
         {
             case 1:
-                Console.Write("\nName of checklist: ");
-                string checklistName = Console.ReadLine();
-                Console.WriteLine("How many times to complete?");
-                double length = int.Parse(Console.ReadLine());
-                Checklist checklist = new Checklist(checklistName, length);
-                goalsList.Add(checklist); //Why Isn't this in the list? When serialized shouldnt it show something?
+                Checklist checklist = new Checklist();
+                goalsList.Add(checklist); 
                 break;
             case 2:
-                Console.Write("\nName of simple goal: ");
-                string simpleName = Console.ReadLine();
-                Simple simple = new Simple(simpleName);
+                Simple simple = new Simple();
                 goalsList.Add(simple); 
+                break;
+            case 3:
+                Eternal eternal = new Eternal();
+                goalsList.Add(eternal); 
                 break;
         }
 
@@ -45,7 +62,8 @@ class GoalsList
         double index = 1;
         foreach (Goal goal in goalsList)
         {
-            Console.WriteLine($"[{index}] {goal.GetName()} || {goal.GetProgress()}");
+            Console.WriteLine($"[{index}] {goal.GetName()} |({goal.GetGoalType()})| {goal.GetProgress()}");
+            index++;
         }
     }
     public double ReportProgress()
@@ -61,3 +79,7 @@ class GoalsList
         return pointsGained;
     }
 }
+
+
+
+

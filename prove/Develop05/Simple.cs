@@ -1,11 +1,16 @@
 class Simple : Goal
 {
+    public override string goalType { get; set; } = "Simple";
     public bool completed { get; set; }
-    public Simple(){}
-    public Simple(string name) : base(name){}
+    public Simple()
+    {
+        Console.Write("\nName of simple goal: ");
+        string simpleName = Console.ReadLine();
+        name = simpleName;
+    }
     public override string GetProgress()
     {
-        return ($"Completed: {completed}");
+        return $"Completed: {completed}";
     }
     public override double ReportProgress()
     {
@@ -17,6 +22,7 @@ class Simple : Goal
                 }
             else
                 {
+                    Console.WriteLine("Keep on trying. ");
                 }
         return GetCompletionScore(); // return number completed now (NOT TOTAL) points per completion
     }

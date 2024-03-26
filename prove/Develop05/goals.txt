@@ -1,0 +1,1 @@
+{"totalScore":0,"menuOptions":["Report Progress on a Goal","Set New Goal","Show Current Score","Display All Goals","Save Goals","Load Saved Goals File","Quit"],"goalsList":[{"goalType":"Checklist","name":"BATTLE ALEX","completionScore":100},{"goalType":"Simple","name":"hug spencer","completionScore":100}]}

@@ -1,7 +1,7 @@
 using System;
 using System.Drawing;
 
-class Program
+class Program 
 {
     static void Main(string[] args)
     {
@@ -9,10 +9,19 @@ class Program
         
         List<Shape> shapes = new List<Shape>();
 
-        Square square = new Square();
-        string color = square.GetColor();
-        double area = square.GetArea();
-        Console.WriteLine(color);
-        Console.WriteLine(area);
+        Rectangle rectangle = new Rectangle("red", 2,3);
+        Circle circle = new Circle("black", 1);
+        Square square = new Square("blue", 2);
+        shapes.Add(rectangle);
+        shapes.Add(circle);
+        shapes.Add(square);
+
+        foreach (Shape shape in shapes)
+        {
+            string color = shape.GetColor();
+            double area = shape.GetArea();
+            Console.WriteLine(color);
+            Console.WriteLine(area);
+        }        
     }
 }

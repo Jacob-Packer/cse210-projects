@@ -1,8 +1,9 @@
 using System.Formats.Tar;
+using System.Reflection.Metadata;
 
 class Square : Shape
 {
-    private double side = 1;
+    private double side;
     public Square(string color, double side) : base(color)
     {
         this.side = side;
@@ -12,31 +13,4 @@ class Square : Shape
         return side * side;
     }
 }
-/*
-<o)
-(_>
-
->o) 
-(_> 
-
-(o>
-<_}----
-
-(o<
-<_)-|----
-
- ^
-(O)  <( )  ( )  ( )>
-            v
-
-   /\  (o<  >o)  \/
-
-  _______
- / |   | \
-|  |(o<|  |
-|  |<_)|  |
-|__|___|__|
-   JACOB
-
-
-*/
+ 

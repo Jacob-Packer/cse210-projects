@@ -1,20 +1,17 @@
-class Checklist : Goal
+
+class Eternal : Goal
 {
-    public override string goalType { get; set; } = "Checklist";
-    public double listLength { get; set; }
+    public override string goalType { get; set; } = "Eternal";
     public double timesCompleted { get; set; }
-    public Checklist()
+    public Eternal()
     {
-        Console.Write("\nName of checklist: ");
-        string checklistName = Console.ReadLine();
-        Console.WriteLine("How many times to complete?");
-        double length = int.Parse(Console.ReadLine());
-        listLength = length;
-        name = checklistName.ToUpper();
+        Console.Write("\nName of eternal goal: ");
+        string eternalName = Console.ReadLine();
+        name = eternalName.ToUpper();
     }
     public override string GetProgress()
     {
-        return $"Completed {timesCompleted}/{listLength} times";
+        return $"Completed {timesCompleted} times";
     }
     public override double ReportProgress()
     {
