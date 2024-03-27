@@ -78,6 +78,87 @@ class GoalsList
         DisplayScore();
         return pointsGained;
     }
+    public void SaveFile() 
+    {
+        // Serialize the goalsList object to JSON
+        // string json = JsonSerializer.Serialize(GoalsList);
+        // Console.WriteLine("\nSerialized GoalsList object:");
+        // Console.WriteLine(json);
+                            
+        Console.WriteLine("Enter the name of the file.");
+        Console.Write("  > ");
+        string filename = Console.ReadLine();
+
+        Console.WriteLine("Saving to file...");
+        
+        using (StreamWriter outputFile = new StreamWriter(filename))
+        {foreach (Goal goal in goalsList)
+            {
+                // You can add text to the file with the WriteLine method
+                // outputFile.WriteLine(json);
+
+                // Use the manual method:
+                outputFile.WriteLine(goal.GetGoalHash());
+            }
+        }
+    }
+        
+    public void ReadFile() 
+    {
+        // // string filename = "myFile.txt"
+        Console.WriteLine("Enter the name of the file.");
+        Console.Write("  > ");
+        string filename = Console.ReadLine();
+        string[] lines = System.IO.File.ReadAllLines(filename);
+
+        // string json = System.IO.File.ReadAllText(filename);
+
+        // // Deserialize the JSON back into the list object
+        // GoalsList goalsList = JsonSerializer.Deserialize<GoalsList>(json);
+
+        foreach (string line in lines)
+        {
+            string[] parts = line.Split(":");
+            string goalType = parts[0];
+
+            if (goalType == "CHECKLIST")
+            {
+                // string goalType        = parts[0];
+                string name            =           parts[1];
+                double completionScore = int.Parse(parts[2]);
+                double listLength      = int.Parse(parts[3]);
+                double timesCompleted  = int.Parse(parts[4]);
+                goalsList.Add(new Checklist(name,completionScore,listLength,timesCompleted));
+                // $"{goalType}:{name}:{completionScore}:{listLength}:{timesCompleted}"
+
+            }
+            if (goalType == "SIMPLE")
+            {
+                // string goalType        = parts[0];
+                string name            = parts[1];
+                double completionScore;
+                double.TryParse(parts[2], out completionScore);
+                string boolNamespace = parts[3];
+                bool completed;
+                bool.TryParse(boolNamespace, out completed);
+                goalsList.Add(new Simple(name, completionScore, completed));
+                
+                // $"{goalType}:{name}:{completionScore}"
+
+            }
+            if (goalType == "ETERNAL")
+            {
+                // string goalType        = parts[0];
+                string name            =           parts[1];
+                double completionScore = int.Parse(parts[2]);
+                double timesCompleted  = int.Parse(parts[3]);
+                goalsList.Add(new Eternal(name, completionScore, timesCompleted));
+            }
+                // $"{goalType}:{name}:{completionScore}"
+
+        }
+    }
+    
 }
 
 

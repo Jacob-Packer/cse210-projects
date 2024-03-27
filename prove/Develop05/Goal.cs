@@ -23,4 +23,5 @@ abstract class Goal
     {
         return goalType;
     }
+    public abstract string GetGoalHash();
 }

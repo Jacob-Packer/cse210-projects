@@ -9,6 +9,12 @@ class Eternal : Goal
         string eternalName = Console.ReadLine();
         name = eternalName.ToUpper();
     }
+    public Eternal(string name, double completionScore, double timesCompleted)
+    {
+        this.name = name;
+        this.completionScore = completionScore;
+        this. timesCompleted = timesCompleted;
+    }
     public override string GetProgress()
     {
         return $"Completed {timesCompleted} times";
@@ -19,5 +25,9 @@ class Eternal : Goal
         double finished = int.Parse(Console.ReadLine());
         this.timesCompleted = timesCompleted + finished; //Check if that works (completed vs this.completed)
         return finished * GetCompletionScore(); // return number completed now (NOT TOTAL) times points per completion
+    }
+    public override string GetGoalHash()
+    {
+        return $"{goalType}:{name}:{completionScore}:{timesCompleted}";
     }
 }
