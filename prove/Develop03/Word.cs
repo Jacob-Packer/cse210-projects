@@ -9,7 +9,6 @@ class Word
     {
         this.word = word;
         this.hidden = hidden;
-
     }
 
     public bool IsHidden()

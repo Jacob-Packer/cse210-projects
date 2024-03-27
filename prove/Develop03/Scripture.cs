@@ -1,38 +1,45 @@
+using System.Diagnostics;
+
 class Scripture
 {
     private string reference;
     private string scriptureText;
+    private double difficultyLevel;
     private List<Word> words = new List<Word>();
 
-    public Scripture(Reference reference, string scriptureText)
+    public Scripture(Reference reference, string scriptureText, double difficultyLevel)
     {
         this.reference = reference.Stringify();
         this.scriptureText = scriptureText; 
+        this.difficultyLevel = difficultyLevel;
 
+        double wordIndex = 1;
         // Split the input string by spaces
         string[] splitScriptureText = scriptureText.Split(' ');
         foreach (string text in splitScriptureText)
         {
-            Word word = new Word(text);
-            words.Add(word);
+            double chance = wordIndex % difficultyLevel;
+            if (chance == 0)
+            {
+                bool hidden = false;
+                Word word = new Word(text,hidden);
+                words.Add(word);
+            }
+            else
+            {
+                bool hidden = true;
+                Word word = new Word(text,hidden);
+                words.Add(word);
+            }
+            wordIndex++;
         }
-
-        // Word word = new Word(); 
-        // split scriptureText by " "
-        // add each word to words list
-        // foreach word in words
-        // send each word to Word(word)
-        // 
-        // foreach word 
-        // add word to list<word>
-        // scripture
-
     }
-    public string DisplayScripture(){
+    
+    public string GetScripture(){
         string scriptureText = "";
         foreach (Word word in words)
         {
-            scriptureText += word.DisplayWord(word.IsHidden());
+            scriptureText += $"{word.DisplayWord(word.IsHidden())} ";
         }
         return scriptureText;
     }
