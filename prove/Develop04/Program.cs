@@ -6,7 +6,7 @@ class Program
     static void Main(string[] args)
     {
         Console.WriteLine("Hello Mindfulness App World!");
-
+        int totalGames = 0;
         // Menu active until quit
         bool quit = false;
         while (!quit)
@@ -40,9 +40,10 @@ class Program
                     default:
                         Console.WriteLine("Enter a number.");
                         break;
-                }    
+                }  
+            totalGames++;  
         }   
-        Console.WriteLine("\nCongratulations on taking care of yourself.");  
+        Console.WriteLine($"\nCongratulations on taking care of yourself. \nYou played {totalGames - 1} total games!");  
         Thread.Sleep(1500);
         Console.Clear();
     }
