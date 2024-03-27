@@ -1,6 +1,7 @@
 using System;
 using System.Reflection;
 using System.Text.Json;
+using System.Xml;
 
 class Program
 {
@@ -49,9 +50,12 @@ class Program
                     goalsList.ReadFile();
                     // Console.WriteLine(@"This should happen automatically from file: prove\Develop05\goals.txt");
                     break;       
-                case 7: // Quit   
+                case 7: //buy item
+                    goalsList.RedeemPoints();
+                    break; 
+                case 8: // Quit   
                     Environment.Exit(0);
-                    break;          
+                    break;         
                 default:
                     Console.WriteLine("Enter a valid option.");
                     break;

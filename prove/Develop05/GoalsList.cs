@@ -5,6 +5,7 @@ using System.IO.Enumeration;
 using System.Numerics;
 using System.Reflection.Metadata.Ecma335;
 using System.Runtime.InteropServices.Marshalling;
+using System.Security.Cryptography;
 using System.Text.Json;
 
 class GoalsList
@@ -15,7 +16,7 @@ class GoalsList
     public GoalsList()
     {
         goalsList = new List<Goal>();
-        menuOptions = new List<string>(){"Report Progress on a Goal", "Set New Goal", "Show Current Score", "Display All Goals", "Save Goals", "Load Saved Goals File", "Quit"};
+        menuOptions = new List<string>(){"Report Progress on a Goal", "Set New Goal", "Show Current Score", "Display All Goals", "Save Goals", "Load Saved Goals File", "Redeem Points in Store", "Quit"};
         totalScore = 0;
     }
     public void DisplayMenu()
@@ -92,7 +93,8 @@ class GoalsList
         Console.WriteLine("Saving to file...");
         
         using (StreamWriter outputFile = new StreamWriter(filename))
-        {foreach (Goal goal in goalsList)
+        {
+            foreach (Goal goal in goalsList)
             {
                 // You can add text to the file with the WriteLine method
                 // outputFile.WriteLine(json);
@@ -100,6 +102,7 @@ class GoalsList
                 // Use the manual method:
                 outputFile.WriteLine(goal.GetGoalHash());
             }
+            outputFile.WriteLine($"TOTALSCORE:{totalScore}");
         }
     }
         
@@ -119,7 +122,7 @@ class GoalsList
         foreach (string line in lines)
         {
             string[] parts = line.Split(":");
-            string goalType = parts[0];
+            string goalType = parts[0].ToUpper();
 
             if (goalType == "CHECKLIST")
             {
@@ -155,7 +158,36 @@ class GoalsList
                 goalsList.Add(new Eternal(name, completionScore, timesCompleted));
             }
                 // $"{goalType}:{name}:{completionScore}"
-
+            if (goalType == "TOTALSCORE")
+            {
+                double totalScore = double.Parse(parts[1]);
+                this.totalScore = totalScore;
+            }
+        }
+    }
+    public void RedeemPoints()
+    {
+        Console.Write("Welcome to the STORE!\nHere you can redeem points for real fake items!\nWhat would you like to buy?\n >");
+        string item = Console.ReadLine();
+        Random r = new Random();
+        double price = r.Next(10000);
+        Console.Write($"Each {item} is going for {price} points right now. \nDo you want to use {price} points to buy it?\n [Y/N]");
+        string buy = Console.ReadLine();
+        if (price >= totalScore)
+        {    
+        if (buy.ToUpper() == "Y")
+            {
+                totalScore -= price;
+                Console.WriteLine($"Congratulations! Your {item} will be soon arriving in the mail. \nPlease come back again soon! \n(P.S. Remember to save the file before you quit. Or don't. ;)");
+            }
+            else
+            {
+                Console.WriteLine("Come check back another time.");
+            }
+        }
+        else
+        {
+            Console.WriteLine($"This item is too expensive right now. \nYou only have {totalScore} points. Come back after earning more!.");
         }
     }
     
