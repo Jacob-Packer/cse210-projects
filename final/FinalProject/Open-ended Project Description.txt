@@ -1,0 +1,17 @@
+Open-ended Project
+A simple game using custom-made console-written GUI animations.
+
+A simple fight between a duck and a hunter. The user can choose to attack or defend. On attack, an animation will run in the console. 
+The animation will be designed using a system of arrays and methods, console-width, and rewriting the console at a set rate of FPS.
+
+Character abs:(health, attack, name)
+  ^Duck
+  ^Hunter
+Screen (screen<arrays>, Rewrite())
+DuckScreen (Write the duck to screen<array> in different poses with multiple methods using global coordinate variables)
+HunterScreen (similar)
+BulletScreen (similar, will also track bullet using column++ in a while loop)
+Game (run game logic and menu)
+
+What I've worked on so far:
+Game logic is sound. I discovered .readkey instead of .readline for quicker iteration with AI. Final screen animation reflects what I hope to accomplish with the bullet, duck, and hunter rewrites using the empty remaining classes.

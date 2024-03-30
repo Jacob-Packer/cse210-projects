@@ -1,6 +1,6 @@
 class Game
 {
-    private string name = "KENZI";
+    private string name = "DUCK";
     public Game(){}
     public void DisplayBattlefield()
     {
