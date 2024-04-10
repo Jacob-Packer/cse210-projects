@@ -1,8 +1,8 @@
 class Boss : Character
 {
     private int health = 250;
-    private int attackHigh = 1;
-    private int attackLow = 1;
+    private int attackHigh = 6;
+    private int attackLow = 2;
     
     public override int GetHealth()
     {
