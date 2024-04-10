@@ -1,6 +1,10 @@
 abstract class Character
 {
-    string name;
-    double health;
-    double attack;
+    int health;
+    int attackHigh;
+    int attackLow;
+    public abstract int GetHealth();
+    public abstract int GetAttackHigh();
+    public abstract int GetAttackLow();
+
 }

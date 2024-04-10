@@ -1,8 +1,8 @@
-class Duck : Character
+class Boss : Character
 {
-    private int health = 100;
-    private int attackHigh = 20;
-    private int attackLow = 10;
+    private int health = 250;
+    private int attackHigh = 1;
+    private int attackLow = 1;
     
     public override int GetHealth()
     {
